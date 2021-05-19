@@ -20,7 +20,7 @@ $sql_pdo = null;
     <a href="tambahukm.php" style="font-size: 1.2rem">Tambah UKM</a>
     <table border="1" width="100%" cellspacing="0" style="margin-top: 1rem;">
         <thead>
-            <tr style="height: 40px; font-size: 1.2rem">
+            <tr>
                 <th>No.</th>
                 <th>Nama UKM</th>
                 <th>Akronim</th>
@@ -32,7 +32,7 @@ $sql_pdo = null;
             foreach($stmt->fetchAll() as $row) {
             // var_dump($row); die;
                 ?>
-            <tr style="height: 40px; font-size: 1.2rem">
+            <tr>
                 <th>1</th>
                 <td><?= $row["nama_ukm"]?></td>
                 <td><?= $row["akronim_ukm"]?></td>

@@ -1,9 +1,9 @@
 <?php
 include "../koneksi.php";
 $sql = "SELECT * FROM hmj";
-$result = $cnn->query($sql);
+$result = $sql_obj->query($sql);
 
-$cnn->close();
+$sql_obj->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,8 @@ $cnn->close();
                 <td><?php echo $row["nama_hmj"]?></td>
                 <td>
                     <a href="edithmj.php">Edit</a>
-                    <a href="#">Hapus</a>
+                    <!-- Ini html sebelumnya diubah menjadi dibawah ini <a href="#">Hapus</a> -->
+                    <a href="hapushmj.php?id=<?= $row["id"]?>">Hapus</a>
                 </td>
             </tr>
             <?php

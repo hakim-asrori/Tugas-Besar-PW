@@ -1,5 +1,5 @@
 body {
-    background-color: #fff;
+    background-color: #eee;
 }
 
 a {
@@ -9,4 +9,39 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+table thead {
+    background-color: aqua;
+}
+
+table tr {
+    height: 40px;
+    font-size: 1.2rem;
+}
+
+input {
+    outline: none;
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    border: 1px solid blue;
+}
+
+input:focus {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: blue;
+}
+
+button:hover {
+    background-color: rgb(19, 19, 189);
 }
