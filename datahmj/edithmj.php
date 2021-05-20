@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Form Edit HMJ</title>
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
     <form action="login.php" method="POST">
@@ -26,7 +27,7 @@
             <input type="Jurusan" name="jurusan" placeholder="Jurusan" />
         </p>
         <p>
-            <input type="submit" name="submit" value="Perbarui" />
+            <button type="submit" name="submit">Perbarui</button>
         </p>
         </fieldset>
     </form>

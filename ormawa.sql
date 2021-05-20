@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Bulan Mei 2021 pada 23.26
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 8.0.6
+-- Waktu pembuatan: 20 Bulan Mei 2021 pada 00.25
+-- Versi server: 5.7.24
+-- Versi PHP: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,6 +62,24 @@ INSERT INTO `ukm` (`id`, `nama_ukm`, `akronim_ukm`) VALUES
 (1, 'Seni Budaya Polindra', 'SEBURA'),
 (2, 'Resimen Mahasiswa', 'MENWA');
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`email`, `password`) VALUES
+('saneglos005@gmail.com', 'hakim123');
+
 --
 -- Indexes for dumped tables
 --
@@ -77,6 +95,12 @@ ALTER TABLE `hmj`
 --
 ALTER TABLE `ukm`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`email`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang

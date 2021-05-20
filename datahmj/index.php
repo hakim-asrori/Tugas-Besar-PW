@@ -12,11 +12,12 @@ $sql_obj->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar HMJ</title>
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <div>
     <a href="tambahhmj.php">Tambah HMJ</a>
-    <table border="1">
+    <table border="1" style="width: 100%">
         <thead>
             <tr>
                 <th>No.</th>
@@ -41,6 +42,7 @@ $sql_obj->close();
                 <td>
                     <a href="edithmj.php">Edit</a>
                     <!-- Ini html sebelumnya diubah menjadi dibawah ini <a href="#">Hapus</a> -->
+                    <span>|</span>
                     <a href="hapushmj.php?id=<?= $row["id"]?>">Hapus</a>
                 </td>
             </tr>
