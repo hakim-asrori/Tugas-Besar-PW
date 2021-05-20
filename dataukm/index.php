@@ -1,5 +1,10 @@
 <?php
+session_start();
 include "../koneksi.php";
+if(!isset($_SESSION['login'])) {
+    echo "<script>alert('Login dahulu');</script>";
+    echo "<script>window.location.replace('../');</script>";
+}
 $stmt = $sql_pdo->prepare("SELECT * FROM ukm");
 $stmt->execute();
 $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -16,37 +21,38 @@ $sql_pdo = null;
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-<div>
-    <a href="tambahukm.php" style="font-size: 1.2rem">Tambah UKM</a>
-    <table border="1" width="100%" cellspacing="0" style="margin-top: 1rem;">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Nama UKM</th>
-                <th>Akronim</th>
-                <th>Opsi</th>
-            </tr>
-        </thead>
-        <body>
-        <?php
-            foreach($stmt->fetchAll() as $row) {
+    <div>
+        <a href="tambahukm.php" style="font-size: 1.2rem">Tambah UKM</a> <br>
+        <a href="../logout.php" style="font-size: 1.2rem">Logout</a>
+        <table border="1" width="100%" cellspacing="0" style="margin-top: 1rem;">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nama UKM</th>
+                    <th>Akronim</th>
+                    <th>Opsi</th>
+                </tr>
+            </thead>
+            <body>
+                <?php
+                foreach($stmt->fetchAll() as $row) {
             // var_dump($row); die;
-                ?>
-            <tr>
-                <th>1</th>
-                <td><?= $row["nama_ukm"]?></td>
-                <td><?= $row["akronim_ukm"]?></td>
-                <td>
-                    <a href="editukm.php?id=<?= $row["id"]?>">Edit</a>
-                    <span>|</span>
-                    <a href="hapusukm.php?id=<?= $row["id"]?>">Hapus</a>
-                </td>
-            </tr>
-            <?php
+                    ?>
+                    <tr>
+                        <th>1</th>
+                        <td><?= $row["nama_ukm"]?></td>
+                        <td><?= $row["akronim_ukm"]?></td>
+                        <td>
+                            <a href="editukm.php?id=<?= $row["id"]?>">Edit</a>
+                            <span>|</span>
+                            <a href="hapusukm.php?id=<?= $row["id"]?>">Hapus</a>
+                        </td>
+                    </tr>
+                    <?php
                 }
-            ?>
-        </body>
-    </table>
-</div>
+                ?>
+            </body>
+        </table>
+    </div>
 </body>
 </html>

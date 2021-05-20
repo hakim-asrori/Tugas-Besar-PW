@@ -1,4 +1,10 @@
-<?php include "../koneksi.php"; ?>
+<?php include "../koneksi.php";
+session_start();
+if(!isset($_SESSION['login'])) {
+    echo "<script>alert('Login dahulu');</script>";
+    echo "<script>window.location.replace('../');</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

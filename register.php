@@ -1,6 +1,11 @@
 <?php
 include "./koneksi.php";
 
+if (isset($_SESSION['login'])) {
+	echo "<script>alert('Logout Dahulu');</script>";
+	echo "<script>window.location.replace('dataukm/');</script>";
+}
+
 if (isset($_POST['register'])) {
 	$email = $_POST['email'];
 	$password1 = $_POST['password1'];

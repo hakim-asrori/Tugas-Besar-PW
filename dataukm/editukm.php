@@ -1,6 +1,10 @@
 <?php
 include "../koneksi.php";
-
+session_start();
+if(!isset($_SESSION['login'])) {
+    echo "<script>alert('Login dahulu');</script>";
+    echo "<script>window.location.replace('../');</script>";
+}
 $id = $_GET['id'];
 
 $stmt = $sql_pdo->prepare("SELECT * FROM ukm WHERE id = '$id'");
