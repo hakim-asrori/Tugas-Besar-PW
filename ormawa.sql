@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Bulan Mei 2021 pada 00.25
--- Versi server: 5.7.24
--- Versi PHP: 7.2.19
+-- Generation Time: May 25, 2021 at 05:56 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,19 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hmj`
+-- Table structure for table `hmj`
 --
 
 CREATE TABLE `hmj` (
   `id` int(11) NOT NULL,
-  `nama_hmj` varchar(100) NOT NULL,
+  `nama_hmj` varchar(50) NOT NULL,
   `akronim_hmj` varchar(10) NOT NULL,
   `tgl_berdiri` date NOT NULL,
-  `jurusan` varchar(50) NOT NULL
+  `jurusan` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `hmj`
+-- Dumping data for table `hmj`
 --
 
 INSERT INTO `hmj` (`id`, `nama_hmj`, `akronim_hmj`, `tgl_berdiri`, `jurusan`) VALUES
@@ -45,27 +45,28 @@ INSERT INTO `hmj` (`id`, `nama_hmj`, `akronim_hmj`, `tgl_berdiri`, `jurusan`) VA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ukm`
+-- Table structure for table `ukm`
 --
 
 CREATE TABLE `ukm` (
   `id` int(11) NOT NULL,
   `nama_ukm` varchar(50) NOT NULL,
-  `akronim_ukm` varchar(20) NOT NULL
+  `akronim_ukm` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ukm`
+-- Dumping data for table `ukm`
 --
 
 INSERT INTO `ukm` (`id`, `nama_ukm`, `akronim_ukm`) VALUES
-(1, 'Seni Budaya Polindra', 'SEBURA'),
-(2, 'Resimen Mahasiswa', 'MENWA');
+(34, 'Seni Budaya Polindra', 'Sebura'),
+(35, 'Forum Mahasiswa Bidikmisi', 'Formadiksi'),
+(37, 'as', 'as');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -74,7 +75,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`email`, `password`) VALUES
@@ -85,38 +86,38 @@ INSERT INTO `users` (`email`, `password`) VALUES
 --
 
 --
--- Indeks untuk tabel `hmj`
+-- Indexes for table `hmj`
 --
 ALTER TABLE `hmj`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `ukm`
+-- Indexes for table `ukm`
 --
 ALTER TABLE `ukm`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `hmj`
+-- AUTO_INCREMENT for table `hmj`
 --
 ALTER TABLE `hmj`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `ukm`
+-- AUTO_INCREMENT for table `ukm`
 --
 ALTER TABLE `ukm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
