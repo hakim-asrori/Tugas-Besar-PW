@@ -57,6 +57,9 @@ function add() {
                     alert("Data berhasil ditambah.");
 
                     load();
+
+                    document.getElementById('nama').value = '';
+                    document.getElementById('akronim').value = '';
                 }
             }
         };
@@ -152,6 +155,10 @@ function update() {
                     alert("Update successfully.");
                     
                     load();
+
+                    document.getElementById('nama').value = '';
+                    document.getElementById('akronim').value = '';
+                    document.getElementById("id").value = '';
                 }
                 
             }

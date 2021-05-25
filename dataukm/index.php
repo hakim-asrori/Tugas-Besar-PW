@@ -18,22 +18,22 @@ if(!isset($_SESSION['login'])) {
 <body>
     <div>
         <a href="../logout.php" style="font-size: 1.2rem">Logout</a>
-            <table style="max-width: 50%"> 
-            <input type="hidden" id="id">
-                <tr>
-                    <td style="width: 50%">Nama UKM </td>
-                    <td>:</td>
-                    <td><input type="text" id="nama" style="width: 100%" /></td>
-                </tr>
-                <tr>
-                    <td style="width: 50%">Akronim UKM </td>
-                    <td>:</td>
-                    <td><input type="text" id="akronim" style="width: 100%"  /></td>
-                </tr>
-            </table>
-            <button type="submit" onclick="add()" id="tambah">Tambah</button>
-            <button type="submit" style="background-color: green" hidden onclick="update()" id="edit">Simpan</button>
-            <hr>
+        <table style="max-width: 50%"> 
+        <input type="hidden" id="id">
+            <tr>
+                <td style="width: 50%">Nama UKM </td>
+                <td>:</td>
+                <td><input type="text" id="nama" style="width: 100%" /></td>
+            </tr>
+            <tr>
+                <td style="width: 50%">Akronim UKM </td>
+                <td>:</td>
+                <td><input type="text" id="akronim" style="width: 100%"  /></td>
+            </tr>
+        </table>
+        <button type="submit" onclick="add()" id="tambah">Tambah</button>
+        <button type="submit" style="background-color: green" hidden onclick="update()" id="edit">Simpan</button>
+        <hr>
         <table border="1" width="100%" cellspacing="0" style="margin-top: 1rem;" id="dataTable">
             <thead>
                 <tr>
