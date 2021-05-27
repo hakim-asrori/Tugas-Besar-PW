@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2021 at 05:56 AM
+-- Generation Time: May 27, 2021 at 01:36 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ormawa`
+-- Database: `db_informasi`
 --
 
 -- --------------------------------------------------------
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `hmj` (
   `id` int(11) NOT NULL,
-  `nama_hmj` varchar(50) NOT NULL,
+  `nama_hmj` varchar(100) NOT NULL,
   `akronim_hmj` varchar(10) NOT NULL,
   `tgl_berdiri` date NOT NULL,
-  `jurusan` varchar(30) NOT NULL
+  `jurusan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -45,23 +45,26 @@ INSERT INTO `hmj` (`id`, `nama_hmj`, `akronim_hmj`, `tgl_berdiri`, `jurusan`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orda`
+--
+
+CREATE TABLE `orda` (
+  `id` int(11) NOT NULL,
+  `nama_orda` varchar(100) NOT NULL,
+  `akronim_orda` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ukm`
 --
 
 CREATE TABLE `ukm` (
   `id` int(11) NOT NULL,
   `nama_ukm` varchar(50) NOT NULL,
-  `akronim_ukm` varchar(10) NOT NULL
+  `akronim_ukm` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ukm`
---
-
-INSERT INTO `ukm` (`id`, `nama_ukm`, `akronim_ukm`) VALUES
-(34, 'Seni Budaya Polindra', 'Sebura'),
-(35, 'Forum Mahasiswa Bidikmisi', 'Formadiksi'),
-(37, 'as', 'as');
 
 -- --------------------------------------------------------
 
@@ -92,6 +95,12 @@ ALTER TABLE `hmj`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orda`
+--
+ALTER TABLE `orda`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `ukm`
 --
 ALTER TABLE `ukm`
@@ -114,10 +123,16 @@ ALTER TABLE `hmj`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `orda`
+--
+ALTER TABLE `orda`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `ukm`
 --
 ALTER TABLE `ukm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
