@@ -1,0 +1,136 @@
+.btn, .modal-open {    
+  display: inline-block;
+  font-weight: 400;
+  color: #858796;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .35rem;
+  outline: none;
+  cursor: pointer;
+  transition: color .15s ease-in-out,
+  background-color .15s ease-in-out,
+  border-color .15s ease-in-out,
+  box-shadow .15s ease-in-out;
+}
+
+.btn-blue {
+  color: #fff;
+  background-color: var(--blue);
+  border-color: var(--blue);
+}
+
+.btn-blue:hover {
+  background-color: #415EB2;
+}
+
+.btn-indigo {
+  color: #fff;
+  background-color: var(--indigo);
+  border-color: var(--indigo);
+}
+
+.btn-indigo:hover {
+  background-color: #5714C5;
+}
+
+.btn-purple {
+  color: #fff;
+  background-color: var(--purple);
+  border-color: var(--purple);
+}
+
+.btn-purple:hover {
+  background-color: #6039A8;
+}
+
+.btn-pink {
+  color: #fff;
+  background-color: var(--pink);
+  border-color: var(--pink);
+}
+
+.btn-pink:hover {
+  background-color: #BA3B75;
+}
+
+.btn-red {
+  color: #fff;
+  background-color: var(--red);
+  border-color: var(--red);
+}
+
+.btn-red:hover {
+  background-color: #BE4438;
+}
+
+.btn-orange {
+  color: #fff;
+  background-color: var(--orange);
+  border-color: var(--orange);
+}
+
+.btn-orange:hover {
+  background-color: #C2691E;
+}
+
+.btn-yellow {
+  color: #fff;
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.btn-yellow:hover {
+  background-color: ;
+}
+
+.btn-green {
+  color: #fff;
+  background-color: var(--green);
+  border-color: var(--green);
+}
+
+.btn-green:hover {
+  background-color: #20A173;
+}
+
+.btn-teal {
+  color: #fff;
+  background-color: var(--teal);
+  border-color: var(--teal);
+}
+
+.btn-teal:hover {
+  background-color: ;
+}
+
+.btn-cyan {
+  color: #fff;
+  background-color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.btn-cyan:hover {
+  background-color: ;
+}
+
+.btn-gray {
+  color: #fff;
+  background-color: var(--gray);
+  border-color: var(--gray);
+}
+
+.btn-gray:hover {
+  background-color: ;
+}
+
+.btn-dark {
+  color: #fff;
+  background-color: var(--dark);
+  border-color: var(--dark);
+}
