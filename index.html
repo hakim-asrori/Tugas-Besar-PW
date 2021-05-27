@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="assets/landing/style.css">
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.css" />
+</head>
+<body>
+
+    <nav class="navbar-title">
+        <div class="container">
+            <img src="https://ti.polindra.ac.id/images/ti.polindra.ac.id-09032017120305-LOGO-POLINDRA-WEB.png" alt="Logo Polindra">
+
+            <div class="title">
+                <h2>Politeknik Negeri Indramayu</h2>
+                <p>Jl. Raya Lohbener Lama No. 08 Indramayu 45252 Fax / Tlp. (0234) 5746464</p>
+            </div>
+        </div>
+    </nav>
+    
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="">Informasi Ormawa</a>
+        </div>
+
+        <ul class="navbar-menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">Tentang Kami</a></li>
+            <li><a href="">Ormawa</a></li>
+            <li><a href="">Kontak Kami</a></li>
+        </ul>
+        
+        <button id="navbar-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <div class="jumbotron">
+        <img style="z-index: -999;" src="https://www.polindra.ac.id/gambar/slidePMB/polindra-slidePMB-17012012104450-gedung.jpg" alt="Logo Polindra">
+    </div>
+
+    <div class="konten">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique expedita ut porro ipsam cumque asperiores quam numquam, doloremque reprehenderit, saepe explicabo minus magnam voluptates molestiae libero ducimus, a facere aliquam.
+    </div>
+
+    <script>
+        let btnToggle = document.getElementById("navbar-toggle");
+        let navbarMenu = document.querySelector(".navbar-menu");
+
+        btnToggle.addEventListener("click", function () {
+            navbarMenu.classList.toggle("slider");
+        })
+    </script>
+</body>
+</html>

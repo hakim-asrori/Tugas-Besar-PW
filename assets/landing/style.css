@@ -1,0 +1,144 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+p, h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-title {
+    max-height: 70px;
+    background-color: black;
+}
+
+.navbar-title .container {
+    display: flex;
+    padding: 5px 190px;
+}
+
+.navbar-title img {
+    height: 70px;
+}
+
+.navbar-title .title {
+    color: white;
+    margin-left: 1rem;
+}
+
+.navbar-title .title h2 {
+    margin-top: .8rem;
+    text-transform: uppercase;
+}
+
+.navbar {
+    padding: .3rem 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+}
+
+.navbar-brand a {
+    font-size: 1.5em;
+    color: white;
+}
+
+.navbar-brand a:hover {
+    color: cyan;
+    text-decoration: underline;
+}
+
+#navbar-toggle {
+    display: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#navbar-toggle input {
+    right: -100px;
+}
+
+#navbar-toggle i {
+    z-index: 9;
+    font-size: 2rem;
+    color: white;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-menu li {
+    padding-right: 35px;
+    margin: 0 10px;
+}
+
+.navbar-menu a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.navbar-menu a:hover {
+    color: cyan;
+    text-decoration: underline;
+}
+
+.jumbotron {
+    padding: 5rem;
+    background-size: cover;
+}
+
+.jumbotron img {
+    height: auto;
+    width: 100%;
+}
+
+@media (max-width: 567px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .navbar {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        overflow-x: hidden;
+    }
+
+    #navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-top: 0;
+        width: 70%;
+        height: 100%;
+        background-color: black;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        transform: translateX(100%);
+        transition: all .7s;
+        z-index: -1;
+    }
+
+    .navbar-menu.slider {
+        transform: translateX(0);
+    }
+
+}

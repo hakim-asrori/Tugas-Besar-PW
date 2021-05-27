@@ -3,7 +3,7 @@ include "layout/head.php";
 include "layout/side.php";
 ?>
 
-<h1 style="margin-bottom: 1rem;" id="title">Data UKM</h1>
+<h1 style="margin-bottom: 1rem;" id="title">Data Unit Kegiatan Mahasiswa</h1>
 
 <label class="modal-open modal-label btn-blue" for="modal-open" id="tambah">Tambah</label>
 <input type="radio" name="modal" value="open" id="modal-open" class="modal-radio">
@@ -38,8 +38,8 @@ include "layout/side.php";
 </div>
 
 <div id="form-edit" hidden>
-    <h1>Edit Data UKM</h1>
-    <div class="form-group">
+    <h1 style="margin: -1rem 0 1rem 0">Edit Data UKM</h1>
+    <div class="form-group" >
         <label for="nama">Nama UKM</label>
         <input type="text" id="nama">
         <input type="hidden" id="id">

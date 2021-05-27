@@ -1,0 +1,15 @@
+5 soal
+
+close book
+
+- array
+- caching data
+- pengiriman/perolehan data
+- ajax
+
+tubes (presentasi)
+
+- konsep
+- teknik penjelasan
+- crud
+- kode program
