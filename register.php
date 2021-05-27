@@ -11,29 +11,12 @@ if (isset($_POST['register'])) {
 	$password1 = $_POST['password1'];
 	$password2 = $_POST['password2'];
 
-	if (empty($email)) {
-		echo '<script>alert("Email tidak boleh kosong")</script>';
-	} elseif (empty($password1)) {
-		echo '<script>alert("Password tidak boleh kosong")</script>';
-	} elseif (empty($password2)) {
-		echo '<script>alert("Konfirmasi password tidak boleh kosong")</script>';
-	} else {
-		$adaEmail = $sql_obj->query("SELECT email FROM users WHERE email = '$email'")->fetch_assoc();
-		if ($adaEmail) {
-			echo '<script>alert("Email sudah terdaftar")</script>';
-		} else {
-			if ($password1 != $password2) {
-				echo '<script>alert("Password tidak sama")</script>';
-			} else {
-				$query = $sql_obj->query("INSERT INTO users VALUES('$email', '$password1')");
+	$query = $sql_obj->query("INSERT INTO users VALUES('$email', '$password1')");
 
-				if ($query) {
-					echo '<script>alert("Selamat! akun anda sudah terdaftar, silahkan login")</script>';
+	if ($query) {
+		echo '<script>alert("Selamat! akun anda sudah terdaftar, silahkan login")</script>';
 
-					echo '<script>location="./"</script>';
-				}
-			}
-		}
+		echo '<script>location="./"</script>';
 	}
 }
 ?>
