@@ -55,7 +55,7 @@ if(isset($_POST["login"])){
         }
 
         .kotak-body {
-            max-width: 400px;
+            width: 400px;
             padding: 10px 20px;
             box-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
             background-color: #bbb;

@@ -32,7 +32,7 @@ if(!isset($_SESSION['login'])) {
             </tr>
         </table>
         <button type="submit" onclick="add()" id="tambah">Tambah</button>
-        <button type="submit" style="background-color: green" hidden onclick="update()" id="edit">Simpan</button>
+        <button type="submit" style="background-color: green" hidden onclick="update()" id="edit">Edit</button>
         <hr>
         <table border="1" width="100%" cellspacing="0" style="margin-top: 1rem;" id="dataTable">
             <thead>
