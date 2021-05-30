@@ -2,6 +2,8 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+    overflow-x: hidden;
 }
 
 a {
@@ -13,23 +15,32 @@ p, h1, h2 {
     padding: 0;
 }
 
+.container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: justify;
+}
+
 .navbar-title {
     max-height: 70px;
+    display: flex;
+    justify-content: space-around;
     background-color: black;
 }
 
 .navbar-title .container {
     display: flex;
-    padding: 5px 190px;
 }
 
 .navbar-title img {
     height: 70px;
+    z-index: 9;
 }
 
 .navbar-title .title {
     color: white;
     margin-left: 1rem;
+    z-index: 9;
 }
 
 .navbar-title .title h2 {
@@ -45,13 +56,17 @@ p, h1, h2 {
     background-color: black;
 }
 
+.navbar-brand {
+    z-index: 9;
+}
+
 .navbar-brand a {
     font-size: 1.5em;
     color: white;
 }
 
 .navbar-brand a:hover {
-    color: cyan;
+    color: #0099ff;
     text-decoration: underline;
 }
 
@@ -61,6 +76,7 @@ p, h1, h2 {
     border: none;
     cursor: pointer;
     background-color: transparent;
+    z-index: 9;
 }
 
 #navbar-toggle input {
@@ -92,7 +108,7 @@ p, h1, h2 {
 }
 
 .navbar-menu a:hover {
-    color: cyan;
+    color: #0099ff;
     text-decoration: underline;
 }
 
@@ -106,9 +122,48 @@ p, h1, h2 {
     width: 100%;
 }
 
+section h1 {
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+section h1::before, section h1::after {
+    background-color: #fff;
+    content: "";
+    display: inline-block;
+    height: .25rem;
+    position: relative;
+    vertical-align: middle;
+    width: 25%;
+    margin: 0 1rem;
+}
+
+#about {
+    margin-top: -10px;
+    min-height: 400px;
+    color: #fff;
+    background-color: #0099ff;
+}
+
+#about .about-content {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+#about .about-content > div {
+    margin: 0 1rem;
+}
+
 @media (max-width: 567px) {
-    body {
-        overflow-x: hidden;
+    html {
+        overflow-x: hidden !important;
+    }
+
+    .navbar-title {
+        display: none;
     }
 
     .navbar {
@@ -134,11 +189,23 @@ p, h1, h2 {
         justify-content: space-evenly;
         transform: translateX(100%);
         transition: all .7s;
-        z-index: -1;
+        z-index: 1;
     }
 
     .navbar-menu.slider {
         transform: translateX(0);
+    }
+
+    section h1::before, section h1::after {
+        display: none;
+    }
+
+    #about .about-content {
+        flex-direction: column;
+    }
+
+    #about .about-content > div {
+        margin: 1rem 0 0 0;
     }
 
 }
