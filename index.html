@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="assets/landing/style.css">
-    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.css" />
+    <title>POLINDRA | Politeknik Negeri Indramayu</title>
+    <link rel="icon" href="https://ti.polindra.ac.id/images/ti.polindra.ac.id-09032017120305-LOGO-POLINDRA-WEB.png">
+    <link rel="stylesheet" href="./assets/landing/style.css">
+    <link rel="stylesheet" href="./assets/fontawesome-free/css/all.css" />
 </head>
 <body>
 
@@ -52,21 +53,40 @@
             <p>
                 Politeknik Indramayu atau dikenal dengan nama POLINDRA, terlahir atas adanya rencana Pemerintah untuk meningkatkan jumlah pendidikan vokasi di Indonesia, pendidikan politeknik baru ini terbuka untuk semua pemerintah daerah namun Pemerintah mensyaratkan dana dari pusat harus di dampingi dana pemerintah daerah dan dilaksanakan dalam bentuk kompetisi proposal yang harus diajukan oleh setiap pemerintah daerah peminat.
             </p>
-            <div class="about-content">
-                <div class="about-left">
+            <div class="content">
+                <div class="left" style="width: 50rem">
                     <h2>Visi</h2>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus maxime ut aliquam voluptatum doloremque omnis, recusandae quas dolorum distinctio. Aliquid sequi magnam beatae quasi officia placeat delectus molestiae nemo ea!
+                    <p>
+                        <q>National Leading and Globaly Competitive Polytechnic</q> <br>
+                        <q>Politeknik Terdepan Tingkat Nasional Berdaya Saing Global</q>
+                    </p>
                 </div>
-                <div class="about-center">
+                <div class="center">
                     <h2>Misi</h2>
-                    Lorem ipsum dolor sit amet consectetur adipisicing, elit. Maxime, eaque! Perferendis ipsam, error deserunt eligendi doloremque molestias veritatis facere ipsum cupiditate dolor tempora iste nostrum fuga ipsa id, harum sapiente.
+                    <ol>
+                        <li>Meningkatkan mutu, akses, dan relevansi pendidikan politeknik untuk menghasilkan lulusan sesuai kebutuhan pekerjaan;</li>
+                        <li>Melakukan penelitian terapan dan pengabdian masyarakat untuk mengatasi persoalan industri dan masyarakat.</li>
+                    </ol>
                 </div>
-                <div class="about-right">
+                <div class="right">
                     <h2>Tujuan</h2>
-                    Lorem ipsum dolor sit amet consectetur adipisicing, elit. Maxime, eaque! Perferendis ipsam, error deserunt eligendi doloremque molestias veritatis facere ipsum cupiditate dolor tempora iste nostrum fuga ipsa id, harum sapiente.
+                    <ul>
+                        <li>Menghasilkan lulusan yang berkualitas, mandiri, dan berdaya juang tinggi</li>
+                        <li>Menghasilkan produk akademik yang memberikan manfaat bagi masyarakat luas</li>
+                        <li>Memberikan kontribusi kepada kesejahteraan masyarakat melalui kegiatan pengabdian kepada masyarakat</li>
+                        <li>Menjalankan program kemitraan dengan industri dan dunia usaha untuk menjamin keberlanjutan penyelenggaraan pendidikan</li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </section>
+
+    <svg id="svgOrmawa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#fff" fill-opacity="1" d="M0,224L60,229.3C120,235,240,245,360,218.7C480,192,600,128,720,133.3C840,139,960,213,1080,229.3C1200,245,1320,203,1380,181.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+    </svg>
+    <section id="ormawa">
+        <h1>Organisasi Mahasiswa</h1>
+        <p><q>Ormawa adalah Organisasi Mahasiswa</q></p>
     </section>
 
     <script>
@@ -76,6 +96,45 @@
         btnToggle.addEventListener("click", function () {
             navbarMenu.classList.toggle("slider");
         })
+
+        // function load() {
+        //     let xhttp = new XMLHttpRequest();
+        //     xhttp.open("GET", "dataorda/data.php", true);
+
+        //     xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        //     xhttp.onreadystatechange = function() {
+        //         if (this.readyState == 4 && this.status == 200) {
+
+        //             let response = JSON.parse(this.responseText);
+        //             let empTable = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
+
+
+        //             empTable.innerHTML = "";
+
+        //             for (let key in response) {
+        //                 if (response.hasOwnProperty(key)) {
+        //                     let val = response[key];
+
+        //                     let NewRow = empTable.insertRow(0); 
+        //                     let nama_cell = NewRow.insertCell(0); 
+        //                     let akronim_cell = NewRow.insertCell(1); 
+        //                     let aksi_cell = NewRow.insertCell(2);
+
+        //                     nama_cell.innerHTML = val['nama']; 
+        //                     akronim_cell.innerHTML = val['akronim']; 
+        //                     aksi_cell.innerHTML = '<button onclick="edit('+ val['id'] +')" class="btn btn-orange">Edit</button> | <button onclick="hapus('+ val['id'] +')" class="btn btn-red">Hapus</button>'; 
+
+        //                 }
+        //             }
+
+
+        //         }
+        //     };
+
+        //     xhttp.send();
+
+        // }
     </script>
 </body>
 </html>
