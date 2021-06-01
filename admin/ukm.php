@@ -3,6 +3,58 @@ include "layout/head.php";
 include "layout/side.php";
 ?>
 
+<style>
+    input[type="file"] {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+        margin: 0;
+        opacity: 0;
+    }
+
+    input[type="file"] ~ .custom-file-label[data-browse]::after {
+        content: attr(data-browse);
+    }
+
+    .custom-file-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+
+    .input-group {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .input-group > .custom-file {
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        width: 1%;
+        margin-bottom: 0;
+    }
+
+    .modal .content {
+        height: 350px;
+    }
+</style>
+
 <h1 style="margin-bottom: 1rem;" id="title">Data Unit Kegiatan Mahasiswa</h1>
 
 <label class="modal-open modal-label btn-blue" for="modal-open" id="tambah">Tambah</label>
@@ -28,6 +80,15 @@ include "layout/side.php";
             <div class="form-group">
                 <label for="akronim">Nama UKM</label>
                 <input type="text" id="akronim">
+            </div>
+            <div class="form-group">
+                <label for="logo">Upload Logo</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" id="logo">
+                        <label for="logo" class="custom-file-label">Pilih File</label>
+                    </div>
+                </div>
             </div>
         </div>
 
