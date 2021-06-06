@@ -3,7 +3,7 @@ session_start();
 include "../koneksi.php";
 if(!isset($_SESSION['login'])) {
 	echo "<script>alert('Login dahulu');</script>";
-	echo "<script>window.location.replace('../');</script>";
+	echo "<script>window.location.replace('../login.php');</script>";
 }
 ?>
 <!DOCTYPE html>

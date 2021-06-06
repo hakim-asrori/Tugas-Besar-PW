@@ -4,55 +4,7 @@ include "layout/side.php";
 ?>
 
 <style>
-    input[type="file"] {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        height: calc(1.5em + 0.75rem + 2px);
-        margin: 0;
-        opacity: 0;
-    }
 
-    input[type="file"] ~ .custom-file-label[data-browse]::after {
-        content: attr(data-browse);
-    }
-
-    .custom-file-label {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1;
-        height: calc(1.5em + 0.75rem + 2px);
-        padding: 0.375rem 0.75rem;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #495057;
-        background-color: #fff;
-        border: 1px solid #ced4da;
-        border-radius: 0.25rem;
-    }
-
-    .input-group {
-        position: relative;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: stretch;
-        width: 100%;
-    }
-
-    .input-group > .custom-file {
-        position: relative;
-        -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
-        width: 1%;
-        margin-bottom: 0;
-    }
-
-    .modal .content {
-        height: 350px;
-    }
 </style>
 
 <h1 style="margin-bottom: 1rem;" id="title">Data Unit Kegiatan Mahasiswa</h1>
@@ -66,7 +18,7 @@ include "layout/side.php";
     </label>
     <div class="content">
         <div class="top">
-            <h2>Tambah Data UKM</h2>
+            <h2>Formulir Data UKM</h2>
             <label class="modal-label close-btn">
                 <input type="radio" name="modal" value="close" class="modal-radio" />
             </label>
@@ -85,32 +37,23 @@ include "layout/side.php";
                 <label for="logo">Upload Logo</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" id="logo">
+                        <input type="file" id="logo" name="logo">
                         <label for="logo" class="custom-file-label">Pilih File</label>
                     </div>
                 </div>
             </div>
+            <div class="form-group" id="img">
+                <div class="form-group">
+                    <img src="" alt="" height="100" width="100">
+                </div>
+            </div>
+            <input type="hidden" id="id">
         </div>
 
         <div class="bottom">
-            <button class="btn btn-blue" onclick="tambah()">Tambah</button>
+            <button class="btn btn-blue" id="tambah" onclick="tambah()">Tambah</button>
+            <button class="btn btn-green" id="ubah" onclick="update()">Ubah</button>
         </div>
-    </div>
-</div>
-
-<div id="form-edit" hidden>
-    <h1 style="margin: -1rem 0 1rem 0">Edit Data UKM</h1>
-    <div class="form-group" >
-        <label for="nama">Nama UKM</label>
-        <input type="text" id="nama">
-        <input type="hidden" id="id">
-    </div>
-    <div class="form-group">
-        <label for="akronim">Nama UKM</label>
-        <input type="text" id="akronim">
-    </div>
-    <div class="form-group">
-        <button class="btn btn-green" onclick="update()">Simpan</button>
     </div>
 </div>
 
@@ -119,6 +62,7 @@ include "layout/side.php";
         <tr>
             <th>Nama UKM</th>
             <th>Akronim UKM</th>
+            <th>Logo UKM</th>
             <th>Opsi</th>
         </tr>
     </thead>
@@ -128,11 +72,18 @@ include "layout/side.php";
 <?php include "layout/foot.php"; ?>
 
 <script>
+    let logo = document.getElementById("logo");
+    let nama = document.getElementById('nama');
+    let akronim = document.getElementById('akronim');
+    let idUkm = document.getElementById('id');
+    let img = document.querySelector("img");
+
+    let xhttp = new XMLHttpRequest();
+
     load();
 
     function load() {
-        let xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "dataukm/data.php", true);
+        xhttp.open("GET", "data/ukm.php", true);
 
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
@@ -141,7 +92,6 @@ include "layout/side.php";
 
                 let response = JSON.parse(this.responseText);
                 let empTable = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
-
 
                 empTable.innerHTML = "";
 
@@ -152,10 +102,12 @@ include "layout/side.php";
                         let NewRow = empTable.insertRow(0); 
                         let nama_cell = NewRow.insertCell(0); 
                         let akronim_cell = NewRow.insertCell(1); 
-                        let aksi_cell = NewRow.insertCell(2);
+                        let logo_cell = NewRow.insertCell(2);
+                        let aksi_cell = NewRow.insertCell(3);
 
                         nama_cell.innerHTML = val['nama']; 
                         akronim_cell.innerHTML = val['akronim']; 
+                        logo_cell.innerHTML = '<a href="../assets/img/'+ val['logo']+'" target="blank"><img width="100" height="100" src="../assets/img/'+ val['logo']+'"></a>'; 
                         aksi_cell.innerHTML = '<button onclick="edit('+ val['id'] +')" class="btn btn-orange">Edit</button> | <button onclick="hapus('+ val['id'] +')" class="btn btn-red">Hapus</button>'; 
 
                     }
@@ -170,51 +122,52 @@ include "layout/side.php";
     }
 
     function tambah() {
-        let nama = document.getElementById('nama').value;
-        let akronim = document.getElementById('akronim').value;
+        
+        if (nama.value != '' && akronim.value != '') {
+            if (logo.files.length > 0) {
+                let formData = new FormData();
 
-        if(nama != '' && akronim !=''){
+                formData.append("logo", logo.files[0]);
+                formData.append("nama", nama.value);
+                formData.append("akronim", akronim.value);
 
-            let data = {nama: nama, akronim: akronim};
-            let xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "dataukm/data.php?page=add", true);
+                xhttp.open("POST", "data/ukm.php?page=add", true);
 
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let response = this.responseText;
 
-                    let response = this.responseText;
-                    if(response == 1){
-                        alert("Data berhasil ditambah.");
-
-                        load();
-
-                        nama.value = '';
-                        akronim.value = '';
-
-                        document.getElementById("modal-open").checked = false;
-                    } else {
-                        alert("Update gagal.");
+                        if (response == 1) {
+                            alert("Type Gambar yang diperbolehkan .jpg, .png, .jpeg");
+                        } else if (response == 2) {
+                            clear();
+                            document.querySelector(".custom-file-label").innerHTML = 'Pilih File';
+                            document.getElementById("modal-open").checked = false;
+                            alert("Data Berhasil Di tambah");
+                            load();
+                        } else {
+                            alert("Data Gagal Di Tambah!");
+                        }
                     }
-                }
-            };
+                };
 
-            xhttp.setRequestHeader("Content-Type", "application/json");
-
-            xhttp.send(JSON.stringify(data));
+                xhttp.send(formData);
+            } else {
+                alert("Pilih Gambar!");
+            }
+        } else {
+            alert("Nama atau akronim harus di isi!");
         }
     }
 
     function edit(id) {
+        document.querySelector(".bottom #tambah").style.display = 'none';
+        document.querySelector(".bottom #ubah").style.display = '';
+        document.getElementById("img").style.display = '';
+        idUkm.style.display = '';
+        document.getElementById("modal-open").checked = true;
 
-        document.getElementById("form-edit").hidden = false;
-        let nama = document.querySelector('#form-edit #nama');
-        let akronim = document.querySelector('#form-edit #akronim');
-
-        document.getElementById("tambah").style.display = "none";
-        document.getElementById("title").style.display = "none";
-
-        let xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "dataukm/data.php?id="+id, true);
+        xhttp.open("GET", "data/ukm.php?id="+id, true);
 
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
@@ -229,7 +182,9 @@ include "layout/side.php";
 
                         nama.value = val['nama']; 
                         akronim.value = val['akronim']; 
-                        document.getElementById("id").value = val['id'];
+                        img.src = '../assets/img/'+val['logo'];
+                        
+                        idUkm.value = val['id'];
 
                     }
                 } 
@@ -241,50 +196,45 @@ include "layout/side.php";
     }
 
     function update() {
-        let nama = document.querySelector('#form-edit #nama').value;
-        let akronim = document.querySelector('#form-edit #akronim').value;
-        let id = document.querySelector('#form-edit #id').value;
 
-        if(nama != '' && akronim !=''){
+        if(nama.value != '' && akronim.value != '' && id.value != ''){
 
-            let data = {nama: nama, akronim: akronim, id: id};
-            let xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "dataukm/data.php?page=update", true);
+            let formData = new FormData();
 
-            xhttp.onreadystatechange = function() {
+            formData.append("logo", logo.files[0]);
+            formData.append("nama", nama.value);
+            formData.append("akronim", akronim.value);
+            formData.append("id", id.value);
+
+            xhttp.open("POST", "data/ukm.php?page=update", true);
+
+            xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-
                     let response = this.responseText;
-                    console.log(response);
-                    if(response == 1){
-                        alert("Update successfully.");
-
+                    
+                    if (response == 1) {
+                        alert("Type Gambar yang diperbolehkan .jpg, .png, .jpeg");
+                    } else if (response == 2) {
+                        clear();
+                        idUkm.value = '';
+                        document.querySelector(".custom-file-label").innerHTML = 'Pilih File';
+                        document.getElementById("modal-open").checked = false;
+                        alert("Data Berhasil Di Ubah");
                         load();
-
-                        nama.value = '';
-                        akronim.value = '';
-                        id.value = '';
-
-                        document.getElementById("form-edit").hidden = true;
-                        document.getElementById("tambah").style.display = "";
-                        document.getElementById("title").style.display = "";
                     } else {
-                        alert("Update gagal.");
+                        alert("Data Gagal Di Ubah!");
                     }
-
                 }
             };
 
-            xhttp.setRequestHeader("Content-Type", "application/json");
-
-            xhttp.send(JSON.stringify(data));
+            xhttp.send(formData);
+        } else {
+            alert("Nama atau akronim harus di isi!");
         }
     }
 
     function hapus(id) {
-        let xhttp = new XMLHttpRequest();
-
-        xhttp.open("GET", "dataukm/data.php?page=delete&id="+id, true);
+        xhttp.open("GET", "data/ukm.php?page=delete&id="+id, true);
 
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
@@ -292,7 +242,7 @@ include "layout/side.php";
             if (this.readyState == 4 && this.status == 200) {
 
                 let response = this.responseText;
-                if(response == 1){
+                if(response == 2){
                     alert("Data berhasil dihapus.");
 
                     load();
@@ -305,4 +255,23 @@ include "layout/side.php";
 
         xhttp.send();
     }
+
+    function clear() {
+        logo.value = '';
+        nama.value = '';
+        akronim.value = '';
+    }
+
+    document.querySelector("#tambah").addEventListener("click", function () {
+        clear();
+        idUkm.style.display = 'none';
+        document.getElementById("img").style.display = 'none';
+        document.querySelector(".bottom #ubah").style.display = 'none';
+        document.querySelector(".bottom #tambah").style.display = '';
+    })
+
+    logo.addEventListener('change', function () {
+        let fileName = logo.value.split('\\').pop();
+        document.querySelector(".custom-file-label").innerHTML = fileName;
+    })
 </script>
