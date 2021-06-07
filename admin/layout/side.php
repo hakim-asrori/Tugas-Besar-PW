@@ -9,6 +9,12 @@ $url = explode('/', $_SERVER['REQUEST_URI'])[2];
 			<span>Home</span>
 		</a>
 	</li>
+	<li class="<?= ($url == 'hmj.php') ? 'active' : '' ?>">
+		<a href="./hmj.php" title="Data HMJ">
+			<i class="fas fa-fw fa-list"></i>
+			<span>Data HMJ</span>
+		</a>
+	</li>
 	<li class="<?= ($url == 'ukm.php') ? 'active' : '' ?>">
 		<a href="./ukm.php" title="Data UKM">
 			<i class="fas fa-fw fa-list"></i>
