@@ -33,7 +33,8 @@ if (isset($_GET['page'])) {
 
 		$sql = $sql_obj->query("SELECT * FROM ukm WHERE id = '$id'")->fetch_assoc();
 
-		if (unlink('../../assets/img/'.$sql['logo_ukm'])) {
+		if ($sql) {
+			unlink('../../assets/img/'.$sql['logo_ukm']);
 			$query = $sql_obj->query("DELETE FROM ukm WHERE id = '$id'");
 
 			if($query){

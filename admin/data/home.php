@@ -32,6 +32,16 @@ if (isset($_GET['page'])) {
 		}
 
 		exit();
+	} elseif ($_GET['page']=="edit-about") {
+		$query = $sql_obj->query("UPDATE vmt SET about = '$_POST[about]' WHERE id = 1");
+
+		if ($query) {
+			echo 1;
+		} else {
+			echo 2;
+		}
+
+		exit();
 	}
 } else {
 	$sql = $sql_obj->query("SELECT * FROM vmt");
@@ -44,6 +54,7 @@ if (isset($_GET['page'])) {
 			'visi' => $ambil['visi'],
 			'misi' => $ambil['misi'],
 			'tujuan' => $ambil['tujuan'],
+			'about' => $ambil['about'],
 		);
 	}
 

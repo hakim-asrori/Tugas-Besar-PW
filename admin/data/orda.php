@@ -33,7 +33,8 @@ if (isset($_GET['page'])) {
 
 		$sql = $sql_obj->query("SELECT * FROM orda WHERE id = '$id'")->fetch_assoc();
 
-		if (unlink('../../assets/img/'.$sql['logo_orda'])) {
+		if ($sql) {
+			unlink('../../assets/img/'.$sql['logo_orda']);
 			$query = $sql_obj->query("DELETE FROM orda WHERE id = '$id'");
 
 			if($query){

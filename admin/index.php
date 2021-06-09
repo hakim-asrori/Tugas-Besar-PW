@@ -7,6 +7,7 @@ include "layout/side.php";
 	.info-polindra {
 		color: black;
 		display: flex;
+        margin-bottom: 1rem;
 	}
 
 	.info-polindra .box {
@@ -29,6 +30,18 @@ include "layout/side.php";
 
 	textarea:disabled {
 		background-color: #eaecf4;
+	}
+
+	.lathi {
+		display: flex;
+	}
+
+	.lathi .mpm {
+		margin-right: 10px;
+	}
+
+	.lathi .mpm, .lathi .bem {
+		width: 100%;
 	}
 
 	@media screen and (max-width: 584px) {
@@ -85,13 +98,81 @@ include "layout/side.php";
 	</div>
 </div>
 
+<div class="box">
+	<h2 class="box-header">Data Legislatif dan Eksekutif</h2>
+	<div class="box-body">
+		<div class="lathi">
+			<div class="mpm">
+				<div class="form-group">
+					<label for="nama">Nama ORDA</label>
+					<input type="text" id="nama">
+				</div>
+				<div class="form-group">
+					<label for="akronim">Akronim ORDA</label>
+					<input type="text" id="akronim">
+				</div>
+				<div class="form-group">
+					<label for="ig">IG ORDA</label>
+					<input type="text" id="ig">
+				</div>
+				<div class="form-group">
+					<label for="logo">Upload Logo</label>
+					<div class="input-group">
+						<div class="custom-file">
+							<input type="file" id="logo" name="logo">
+							<label for="logo" class="custom-file-label">Pilih File</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" id="img">
+					<div class="form-group">
+						<img src="" alt="" height="100" width="100">
+					</div>
+				</div>
+				<input type="hidden" id="id">
+			</div>
+			<div class="bem">
+				<div class="form-group">
+					<label for="nama">Nama ORDA</label>
+					<input type="text" id="nama">
+				</div>
+				<div class="form-group">
+					<label for="akronim">Akronim ORDA</label>
+					<input type="text" id="akronim">
+				</div>
+				<div class="form-group">
+					<label for="ig">IG ORDA</label>
+					<input type="text" id="ig">
+				</div>
+				<div class="form-group">
+					<label for="logo">Upload Logo</label>
+					<div class="input-group">
+						<div class="custom-file">
+							<input type="file" id="logo" name="logo">
+							<label for="logo" class="custom-file-label">Pilih File</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" id="img">
+					<div class="form-group">
+						<img src="" alt="" height="100" width="100">
+					</div>
+				</div>
+				<input type="hidden" id="id">
+			</div>
+		</div>
+	</div>
+</div>
+
 <?php include "layout/foot.php"; ?>
 
 <script>
+	about = document.getElementById('about');
 	visi = document.getElementById('visi');
 	misi = document.getElementById('misi');
 	tujuan = document.getElementById('tujuan');
 
+	btnAbout = document.getElementById('editAbout');
 	btnVisi = document.getElementById('editVisi');
 	btnMisi = document.getElementById('editMisi');
 	btnTujuan = document.getElementById('editTujuan');
@@ -99,6 +180,12 @@ include "layout/side.php";
 	let xhttp = new XMLHttpRequest();
 	let formData = new FormData();
 	loadVMT();
+
+    btnAbout.addEventListener("click", function () {
+		btnAbout.style.display = "none";
+		about.disabled = false;
+		document.getElementById('simpanAbout').style.display = '';
+	});
 
 	btnVisi.addEventListener("click", function () {
 		btnVisi.style.display = "none";
@@ -132,6 +219,7 @@ include "layout/side.php";
 						visi.value = val['visi']; 
 						misi.value = val['misi']; 
 						tujuan.value = val['tujuan'];
+						about.value = val['about'];
 
 					}
 				}
@@ -141,7 +229,35 @@ include "layout/side.php";
 		xhttp.send();
 	}
 
-	function editVisi() {
+	function editAbout() {
+		if(about.value != ''){
+			formData.append("about", about.value);
+
+			xhttp.open("POST", "data/home.php?page=edit-about", true);
+
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					let response = this.responseText;
+
+					if (response == 1) {
+						alert("About berhasil di ubah");
+						btnAbout.style.display = "";
+						about.disabled = true;
+						document.getElementById('simpanAbout').style.display = 'none';
+
+                        loadVMT();
+					} else {
+						alert("About gagal di ubah");
+					}
+
+				}
+			}
+
+			xhttp.send(formData);
+		}
+	};
+	
+    function editVisi() {
 		if(visi.value != ''){
 			formData.append("visi", visi.value);
 
