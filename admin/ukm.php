@@ -30,8 +30,12 @@ include "layout/side.php";
                 <input type="text" id="nama">
             </div>
             <div class="form-group">
-                <label for="akronim">Nama UKM</label>
+                <label for="akronim">Akronim UKM</label>
                 <input type="text" id="akronim">
+            </div>
+            <div class="form-group">
+                <label for="ig">IG UKM</label>
+                <input type="text" id="ig">
             </div>
             <div class="form-group">
                 <label for="logo">Upload Logo</label>
@@ -62,6 +66,7 @@ include "layout/side.php";
         <tr>
             <th>Nama UKM</th>
             <th>Akronim UKM</th>
+            <th>IG UKM</th>
             <th>Logo UKM</th>
             <th>Opsi</th>
         </tr>
@@ -74,6 +79,7 @@ include "layout/side.php";
 <script>
     let logo = document.getElementById("logo");
     let nama = document.getElementById('nama');
+    let ig = document.getElementById('ig');
     let akronim = document.getElementById('akronim');
     let idUkm = document.getElementById('id');
     let img = document.querySelector("img");
@@ -102,11 +108,13 @@ include "layout/side.php";
                         let NewRow = empTable.insertRow(0); 
                         let nama_cell = NewRow.insertCell(0); 
                         let akronim_cell = NewRow.insertCell(1); 
-                        let logo_cell = NewRow.insertCell(2);
-                        let aksi_cell = NewRow.insertCell(3);
+                        let ig_cell = NewRow.insertCell(2);
+                        let logo_cell = NewRow.insertCell(3);
+                        let aksi_cell = NewRow.insertCell(4);
 
                         nama_cell.innerHTML = val['nama']; 
                         akronim_cell.innerHTML = val['akronim']; 
+                        ig_cell.innerHTML = '<a class="btn btn-green" href="'+ val['ig'] +'" target="blank">Lihat IG</a>'; 
                         logo_cell.innerHTML = '<a href="../assets/img/'+ val['logo']+'" target="blank"><img width="100" height="100" src="../assets/img/'+ val['logo']+'"></a>'; 
                         aksi_cell.innerHTML = '<button onclick="edit('+ val['id'] +')" class="btn btn-orange">Edit</button> | <button onclick="hapus('+ val['id'] +')" class="btn btn-red">Hapus</button>'; 
 
@@ -122,7 +130,7 @@ include "layout/side.php";
     }
 
     function tambah() {
-        
+
         if (nama.value != '' && akronim.value != '') {
             if (logo.files.length > 0) {
                 let formData = new FormData();
@@ -130,12 +138,15 @@ include "layout/side.php";
                 formData.append("logo", logo.files[0]);
                 formData.append("nama", nama.value);
                 formData.append("akronim", akronim.value);
+                formData.append("ig", ig.value);
 
                 xhttp.open("POST", "data/ukm.php?page=add", true);
 
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         let response = this.responseText;
+
+                        console.log(response);
 
                         if (response == 1) {
                             alert("Type Gambar yang diperbolehkan .jpg, .png, .jpeg");
@@ -182,6 +193,7 @@ include "layout/side.php";
 
                         nama.value = val['nama']; 
                         akronim.value = val['akronim']; 
+                        ig.value = val['ig']; 
                         img.src = '../assets/img/'+val['logo'];
                         
                         idUkm.value = val['id'];
@@ -205,6 +217,7 @@ include "layout/side.php";
             formData.append("nama", nama.value);
             formData.append("akronim", akronim.value);
             formData.append("id", id.value);
+            formData.append("ig", ig.value);
 
             xhttp.open("POST", "data/ukm.php?page=update", true);
 
@@ -260,6 +273,7 @@ include "layout/side.php";
         logo.value = '';
         nama.value = '';
         akronim.value = '';
+        ig.value = '';
     }
 
     document.querySelector("#tambah").addEventListener("click", function () {

@@ -39,8 +39,7 @@
 .modal .content {
   position: absolute;
   width: 70%;
-  max-height: 70%;
-  top: 20%;
+  top: 3rem;
   left: 15%;
   color: #000;
   background: #fff;

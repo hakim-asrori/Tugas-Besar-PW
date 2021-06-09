@@ -7,6 +7,7 @@ if (isset($_GET['page'])) {
 
 		$nama = $_POST['nama'];
 		$akronim = $_POST['akronim'];
+		$ig = $_POST['ig'];
 		$namaFile = $_FILES['logo']['name'];
 
 		$ext = array('png', 'jpg', 'jpeg');
@@ -16,7 +17,7 @@ if (isset($_GET['page'])) {
 			echo 1;
 		} else {
 			$logo = md5(uniqid().$namaFile);
-			$query = $sql_obj->query("INSERT INTO hmj (nama_hmj, akronim_hmj, logo_hmj) VALUES ('$nama', '$akronim', '$logo')");
+			$query = $sql_obj->query("INSERT INTO hmj (nama_hmj, akronim_hmj, ig_hmj, logo_hmj) VALUES ('$nama', '$akronim', '$ig', '$logo')");
 
 			if ($query) {
 				move_uploaded_file($_FILES['logo']['tmp_name'], "../../assets/img/".$logo);
@@ -32,9 +33,9 @@ if (isset($_GET['page'])) {
 
 		$sql = $sql_obj->query("SELECT * FROM hmj WHERE id = '$id'")->fetch_assoc();
 
-		if (unlink('../../assets/img/'.$sql['logo_hmj'])) {
+		if ($sql) {
 			$query = $sql_obj->query("DELETE FROM hmj WHERE id = '$id'");
-
+			unlink('../../assets/img/'.$sql['logo_hmj']);
 			if($query){
 				echo 2; 
 			}else{
@@ -51,12 +52,13 @@ if (isset($_GET['page'])) {
 		$nama = $_POST['nama'];
 		$akronim = $_POST['akronim'];
 		$id = $_POST['id'];
+		$ig = $_POST['ig'];
 
 
 		$data = $sql_obj->query("SELECT * FROM hmj WHERE id = '$id'")->fetch_assoc();
 
 		if (empty($_FILES['logo']['name'])) {
-			$query = $sql_obj->query("UPDATE hmj SET nama_hmj = '$nama', akronim_hmj = '$akronim' WHERE id = '$id'");
+			$query = $sql_obj->query("UPDATE hmj SET nama_hmj = '$nama', akronim_hmj = '$akronim', ig_hmj = '$ig' WHERE id = '$id'");
 			echo 2;
 		} else {
 			$namaFile = $_FILES['logo']['name'];
@@ -66,7 +68,7 @@ if (isset($_GET['page'])) {
 				echo 1;
 			} else {
 				$logo = md5(uniqid().$namaFile);
-				$query = $sql_obj->query("UPDATE hmj SET nama_hmj = '$nama', akronim_hmj = '$akronim', logo_hmj = '$logo' WHERE id = '$id'");
+				$query = $sql_obj->query("UPDATE hmj SET nama_hmj = '$nama', akronim_hmj = '$akronim', ig_hmj = '$ig', logo_hmj = '$logo' WHERE id = '$id'");
 				unlink('../../assets/img/'.$data['logo_hmj']);
 				move_uploaded_file($_FILES['logo']['tmp_name'], "../../assets/img/".$logo);
 				echo 2;
@@ -90,6 +92,7 @@ if (isset($_GET['page'])) {
 			'id' => $ambil['id'],
 			'nama' => $ambil['nama_hmj'],
 			'akronim' => $ambil['akronim_hmj'],
+			'ig' => $ambil['ig_hmj'],
 			'logo' => $ambil['logo_hmj']
 		);
 	}

@@ -7,6 +7,7 @@ if (isset($_GET['page'])) {
 
 		$nama = $_POST['nama'];
 		$akronim = $_POST['akronim'];
+		$ig = $_POST['ig'];
 		$namaFile = $_FILES['logo']['name'];
 
 		$ext = array('png', 'jpg', 'jpeg');
@@ -16,7 +17,7 @@ if (isset($_GET['page'])) {
 			echo 1;
 		} else {
 			$logo = md5(uniqid().$namaFile);
-			$query = $sql_obj->query("INSERT INTO ukm (nama_ukm, akronim_ukm, logo_ukm) VALUES ('$nama', '$akronim', '$logo')");
+			$query = $sql_obj->query("INSERT INTO ukm (nama_ukm, akronim_ukm, ig_ukm, logo_ukm) VALUES ('$nama', '$akronim', '$ig', '$logo')");
 
 			if ($query) {
 				move_uploaded_file($_FILES['logo']['tmp_name'], "../../assets/img/".$logo);
@@ -51,12 +52,13 @@ if (isset($_GET['page'])) {
 		$nama = $_POST['nama'];
 		$akronim = $_POST['akronim'];
 		$id = $_POST['id'];
+		$ig = $_POST['ig'];
 
 
 		$data = $sql_obj->query("SELECT * FROM ukm WHERE id = '$id'")->fetch_assoc();
 
 		if (empty($_FILES['logo']['name'])) {
-			$query = $sql_obj->query("UPDATE ukm SET nama_ukm = '$nama', akronim_ukm = '$akronim' WHERE id = '$id'");
+			$query = $sql_obj->query("UPDATE ukm SET nama_ukm = '$nama', akronim_ukm = '$akronim', ig_ukm = '$ig' WHERE id = '$id'");
 			echo 2;
 		} else {
 			$namaFile = $_FILES['logo']['name'];
@@ -66,7 +68,7 @@ if (isset($_GET['page'])) {
 				echo 1;
 			} else {
 				$logo = md5(uniqid().$namaFile);
-				$query = $sql_obj->query("UPDATE ukm SET nama_ukm = '$nama', akronim_ukm = '$akronim', logo_ukm = '$logo' WHERE id = '$id'");
+				$query = $sql_obj->query("UPDATE ukm SET nama_ukm = '$nama', akronim_ukm = '$akronim', ig_ukm = '$ig', logo_ukm = '$logo' WHERE id = '$id'");
 				unlink('../../assets/img/'.$data['logo_ukm']);
 				move_uploaded_file($_FILES['logo']['tmp_name'], "../../assets/img/".$logo);
 				echo 2;
@@ -90,6 +92,7 @@ if (isset($_GET['page'])) {
 			'id' => $ambil['id'],
 			'nama' => $ambil['nama_ukm'],
 			'akronim' => $ambil['akronim_ukm'],
+			'ig' => $ambil['ig_ukm'],
 			'logo' => $ambil['logo_ukm']
 		);
 	}
