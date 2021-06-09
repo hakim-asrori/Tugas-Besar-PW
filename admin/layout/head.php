@@ -14,9 +14,7 @@ if(!isset($_SESSION['login'])) {
 	<title>Admin Informasi Ormawa</title>
 	<link rel="stylesheet" href="/assets/fontawesome-free/css/all.css" />
 	<link rel="stylesheet" href="/assets/admin/style.css">
-	<style>
-
-	</style>
+	<link rel="icon" href="https://ti.polindra.ac.id/images/ti.polindra.ac.id-09032017120305-LOGO-POLINDRA-WEB.png">
 </head>
 <body>
 
