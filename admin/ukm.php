@@ -100,7 +100,7 @@ include "layout/side.php";
                 let empTable = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
 
                 empTable.innerHTML = "";
-
+                let no = 1;
                 for (let key in response) {
                     if (response.hasOwnProperty(key)) {
                         let val = response[key];

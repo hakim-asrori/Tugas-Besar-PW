@@ -7,16 +7,16 @@ include "layout/side.php";
 	.info-polindra {
 		color: black;
 		display: flex;
-        margin-bottom: 1rem;
+		margin-bottom: 1rem;
 	}
 
 	.info-polindra .box {
 		/* margin-right: 10px; */
 	}
 
-    .info-polindra .visi, .info-polindra .misi {
-        margin-right: 10px;
-    }
+	.info-polindra .visi, .info-polindra .misi {
+		margin-right: 10px;
+	}
 
 	.info-polindra > div {
 		width: 100%;
@@ -30,18 +30,6 @@ include "layout/side.php";
 
 	textarea:disabled {
 		background-color: #eaecf4;
-	}
-
-	.lathi {
-		display: flex;
-	}
-
-	.lathi .mpm {
-		margin-right: 10px;
-	}
-
-	.lathi .mpm, .lathi .bem {
-		width: 100%;
 	}
 
 	@media screen and (max-width: 584px) {
@@ -58,12 +46,12 @@ include "layout/side.php";
 
 <h1 style="margin-bottom: 1rem;">Info Polindra</h1>
 <div class="box" style="margin-bottom: 1rem;">
-    <h2 class="box-header">Tentang Polindra</h2>
-    <div class="box-body">
-        <textarea id="about" disabled></textarea>
-        <button class="btn btn-orange" id="editAbout">Edit</button>
+	<h2 class="box-header">Tentang Polindra</h2>
+	<div class="box-body">
+		<textarea id="about" disabled></textarea>
+		<button class="btn btn-orange" id="editAbout">Edit</button>
 		<button class="btn btn-green" id="simpanAbout" onclick="editAbout()" style="display: none">Simpan</button>
-    </div>
+	</div>
 </div>
 <div class="info-polindra">
 	<div class="visi">
@@ -98,72 +86,6 @@ include "layout/side.php";
 	</div>
 </div>
 
-<div class="box">
-	<h2 class="box-header">Data Legislatif dan Eksekutif</h2>
-	<div class="box-body">
-		<div class="lathi">
-			<div class="mpm">
-				<div class="form-group">
-					<label for="nama">Nama ORDA</label>
-					<input type="text" id="nama">
-				</div>
-				<div class="form-group">
-					<label for="akronim">Akronim ORDA</label>
-					<input type="text" id="akronim">
-				</div>
-				<div class="form-group">
-					<label for="ig">IG ORDA</label>
-					<input type="text" id="ig">
-				</div>
-				<div class="form-group">
-					<label for="logo">Upload Logo</label>
-					<div class="input-group">
-						<div class="custom-file">
-							<input type="file" id="logo" name="logo">
-							<label for="logo" class="custom-file-label">Pilih File</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group" id="img">
-					<div class="form-group">
-						<img src="" alt="" height="100" width="100">
-					</div>
-				</div>
-				<input type="hidden" id="id">
-			</div>
-			<div class="bem">
-				<div class="form-group">
-					<label for="nama">Nama ORDA</label>
-					<input type="text" id="nama">
-				</div>
-				<div class="form-group">
-					<label for="akronim">Akronim ORDA</label>
-					<input type="text" id="akronim">
-				</div>
-				<div class="form-group">
-					<label for="ig">IG ORDA</label>
-					<input type="text" id="ig">
-				</div>
-				<div class="form-group">
-					<label for="logo">Upload Logo</label>
-					<div class="input-group">
-						<div class="custom-file">
-							<input type="file" id="logo" name="logo">
-							<label for="logo" class="custom-file-label">Pilih File</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group" id="img">
-					<div class="form-group">
-						<img src="" alt="" height="100" width="100">
-					</div>
-				</div>
-				<input type="hidden" id="id">
-			</div>
-		</div>
-	</div>
-</div>
-
 <?php include "layout/foot.php"; ?>
 
 <script>
@@ -181,7 +103,7 @@ include "layout/side.php";
 	let formData = new FormData();
 	loadVMT();
 
-    btnAbout.addEventListener("click", function () {
+	btnAbout.addEventListener("click", function () {
 		btnAbout.style.display = "none";
 		about.disabled = false;
 		document.getElementById('simpanAbout').style.display = '';
@@ -245,7 +167,7 @@ include "layout/side.php";
 						about.disabled = true;
 						document.getElementById('simpanAbout').style.display = 'none';
 
-                        loadVMT();
+						loadVMT();
 					} else {
 						alert("About gagal di ubah");
 					}
@@ -257,7 +179,7 @@ include "layout/side.php";
 		}
 	};
 	
-    function editVisi() {
+	function editVisi() {
 		if(visi.value != ''){
 			formData.append("visi", visi.value);
 
@@ -273,7 +195,7 @@ include "layout/side.php";
 						visi.disabled = true;
 						document.getElementById('simpanVisi').style.display = 'none';
 
-                        loadVMT();
+						loadVMT();
 					} else {
 						alert("Visi gagal di ubah");
 					}
@@ -301,7 +223,7 @@ include "layout/side.php";
 						misi.disabled = true;
 						document.getElementById('simpanMisi').style.display = 'none';
 
-                        loadVMT();
+						loadVMT();
 					} else {
 						alert("Misi gagal di ubah");
 					}
@@ -329,7 +251,7 @@ include "layout/side.php";
 						tujuan.disabled = true;
 						document.getElementById('simpanTujuan').style.display = 'none';
 
-                        loadVMT();
+						loadVMT();
 					} else {
 						alert("Tujuan gagal di ubah");
 					}
@@ -340,4 +262,5 @@ include "layout/side.php";
 			xhttp.send(formData);
 		}
 	};
+
 </script>

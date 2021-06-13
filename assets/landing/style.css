@@ -167,6 +167,11 @@ section#about h1::after {
     margin-top: -14rem;
 }
 
+section#ormawa img {
+    width: 150px;
+    margin-bottom: 1.2rem;
+}
+
 section#ormawa h1 {
     text-align: center;
     font-size: 2em;
@@ -188,6 +193,34 @@ section#ormawa h1::after {
     vertical-align: middle;
     width: 25%;
     margin: 0 1rem;
+}
+
+section#ormawa .lathi {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+section#ormawa .ormawa {
+    display: flex;
+    justify-content: space-around;
+}
+
+section#ormawa #ukm {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: -10px;
+    padding: 2rem 0;
+    text-align: center;
+    color: white;
+    background-color: #000;
+}
+
+footer i {
+    color: red;
 }
 
 @media screen and (max-width: 768px) {
@@ -274,4 +307,5 @@ section#ormawa h1::after {
     #about {
         padding-bottom: 2rem;
     }
+
 }
